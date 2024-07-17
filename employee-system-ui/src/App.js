@@ -7,7 +7,7 @@ import EmployeeList from "./components/EmployeeList";
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-slate-500">
+      <div className="">
         <Navbar />
         <Routes>
           <Route index element={<EmployeeList />} />
