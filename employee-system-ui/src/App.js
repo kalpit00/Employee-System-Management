@@ -1,13 +1,8 @@
 import "./App.css";
+import Navbar from "./components/Navbar";
 
 function App() {
-  return (
-    <div className="bg-slate-800">
-      <div className="h-16 flex items-center">
-        <p>Employee Management System</p>
-      </div>
-    </div>
-  );
+  return <Navbar />;
 }
 
 export default App;
