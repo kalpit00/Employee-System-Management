@@ -1,10 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeList = () => {
+  const navigate = useNavigate();
   return (
     <div className="container mx-auto my-6">
       <div className="h-12">
-        <button className="rounded bg-purple-950 text-white px-6 py-2 font-semibold">
+        <button
+          className="rounded bg-purple-950 text-white px-6 py-2 font-semibold"
+          onClick={() => navigate("/addEmployee")}
+        >
           Add Employee
         </button>
       </div>
