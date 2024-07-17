@@ -12,6 +12,16 @@ const AddEmployee = () => {
     const value = e.target.value;
     setEmployee({ ...employee, [e.target.name]: value });
   };
+  const reset = (e) => {
+    e.preventDefault();
+    setEmployee({
+      id: "",
+      firstName: "",
+      lastName: "",
+      emailId: "",
+    });
+  };
+
   const saveEmployee = (e) => {
     e.preventDefault();
     EmployeeService.saveEmployee(employee)
@@ -71,7 +81,10 @@ const AddEmployee = () => {
           >
             Save
           </button>
-          <button className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-10">
+          <button
+            className="rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-10"
+            onClick={reset}
+          >
             Clear
           </button>
         </div>
