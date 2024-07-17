@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmployeeService from "../services/EmployeeService";
-import Employee from "./Employee";
+import Employee from "./Employee.js";
 
 const EmployeeList = () => {
   const navigate = useNavigate();
@@ -21,6 +21,17 @@ const EmployeeList = () => {
     };
     fetchData();
   }, []);
+
+  const deleteEmployee = (e, id) => {
+    e.preventDefault();
+    EmployeeService.deleteEmployee(id).then((res) => {
+      if (employees) {
+        setEmployees((prevElement) => {
+          return prevElement.filter((employee) => employee.id !== id);
+        });
+      }
+    });
+  };
 
   return (
     <div className="container mx-auto my-6">
@@ -54,7 +65,11 @@ const EmployeeList = () => {
           {!loading && (
             <tbody>
               {employees.map((employee) => (
-                <Employee employee={employee} key={employee.id}></Employee>
+                <Employee
+                  employee={employee}
+                  key={employee.id}
+                  deleteEmployee={deleteEmployee}
+                ></Employee>
               ))}
             </tbody>
           )}
